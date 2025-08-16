@@ -1,5 +1,6 @@
 #include "CRUD.hpp"
-
+#include "Biblioteca.hpp"
+#pragma once
 class Usuario{
 	private:
 	std::string usuario, nome, senha;
@@ -14,7 +15,7 @@ class Usuario{
 		return nome;
 	}
 	std::string getSenha(){
-		return senha
+		return senha;
 	}
 
 	void setUsuario(std::string u){
