@@ -1,12 +1,18 @@
-#include "CRUD.hpp"
 #include "Biblioteca.hpp"
+#include <vector>
 #pragma once
 class Usuario{
 	private:
 	std::string usuario, nome, senha;
+	std::vector<Biblioteca> *livros;
 
 	public:
 	Usuario(){}
+	Usuario(std::string u, std::string n, std::string s){
+		usuario = u;
+		nome = n;
+		senha = s;
+	}
 	
 	std::string getUsuario(){
 		return usuario;
