@@ -6,7 +6,12 @@ class Livro : public Biblioteca{
 	int paginas;
 
 	public:
-	Livro(){}
+	Livro(std::string t, std::string a, std::string e, int d, float n, std::string g, std::string ed, int p)
+		: Biblioteca(t, a, e, d, n) {
+		genero = g;
+		edicao = ed;
+		paginas = p;
+	}
 
 	void exibir(){
 		Biblioteca::exibir();
