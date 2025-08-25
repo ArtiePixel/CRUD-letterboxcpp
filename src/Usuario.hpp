@@ -1,6 +1,7 @@
 #include "Biblioteca.hpp"
 #include <vector>
 #pragma once
+
 class Usuario{
 	private:
 	std::string usuario, nome, senha;

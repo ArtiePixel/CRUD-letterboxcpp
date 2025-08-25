@@ -26,6 +26,11 @@ class CRUD{
         std::cout << "-------------------------" << std::endl;
     }
     int pesquisarUsuario(std::string name){
-        
+        for(int i = 0; i < usuarios.size(); i++){
+            if (usuarios[i].getNome() == name){
+                return i;
+            }
+        }
+        return -1;
     }
 };
