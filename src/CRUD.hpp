@@ -21,13 +21,13 @@ class CRUD{
         }
         std::cout << "--- Lista de Usuários ---" << std::endl;
         for (auto user : usuarios){
-            user.getNome();
+            std::cout << "Nome: " << user.getNome() << std::endl;
         }
         std::cout << "-------------------------" << std::endl;
     }
-    int pesquisarUsuario(std::string name){
+    int pesquisarUsuario(std::string usuario){
         for(int i = 0; i < usuarios.size(); i++){
-            if (usuarios[i].getNome() == name){
+            if (usuarios[i].getUsuario() == usuario){
                 return i;
             }
         }
