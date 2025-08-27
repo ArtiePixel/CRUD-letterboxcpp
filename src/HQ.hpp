@@ -6,7 +6,6 @@ class HQ : public Biblioteca{
     std::string colecao, volume;
 
     public:
-    public:
     HQ(std::string t, std::string a, std::string e, int d, float n, std::string c, std::string v) 
         : Biblioteca(t, a, e, d, n) {
         colecao = c;
@@ -17,5 +16,4 @@ class HQ : public Biblioteca{
         Biblioteca::exibir();
         std::cout << "Colecao: " << colecao << "\nVolume: " << volume << std::endl;
     }
-
 };

@@ -21,4 +21,5 @@ class Biblioteca{
         std::cout << "Titulo: " << titulo << "\nAutor: " << autor << "\nEditora: " << editora << "\nAno: " << data << "\nNota: " << nota << std::endl;
     }
 
+    virtual ~Biblioteca() {}
 };

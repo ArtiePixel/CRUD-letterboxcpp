@@ -1,14 +1,15 @@
 #include "Usuario.hpp"
 #include <vector>
 #include <iostream>
-#include <fstream>   //  leitura/escrita de arquivos
-#include <sstream>   //  parsear linhas
+#include <string>
+#include <fstream>   //  pro arquivo txt
+#include <sstream>   //  pro arquivo txt
 
 
 class CRUD{
     private:
     std::vector<Usuario> usuarios;
-    std::string arquivoUsuarios = "usuarios.txt"; // arquivo
+    std::string arquivoUsuarios = "usuarios.txt"; // arquivo txt
 
     public:
     int pesquisarUsuario(std::string usuario){
@@ -19,6 +20,20 @@ class CRUD{
         }
         return -1;
     }
+
+    Usuario* autenticarUsuario(const std::string& username, const std::string& senha) {
+        int i = pesquisarUsuario(username);
+
+        if (i != -1) {
+            if (usuarios[i].getSenha() == senha) {
+                return &usuarios[i];
+            }
+        }
+        return nullptr;
+    }
+
+
+
     void criarUsuario(std::string user, std::string name, std::string password){
         if (pesquisarUsuario(user) != -1) {
         std::cout << "Erro: Nome de usuário '" << user << "' já existe." << std::endl;

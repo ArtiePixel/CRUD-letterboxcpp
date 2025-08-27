@@ -13,7 +13,7 @@ class Audiobook : public Biblioteca {
         narrador = na;
     }
 
-    void exibir(){
+    void exibir() override {
         Biblioteca::exibir();
         std::cout << "Duração: " << duracao << std::endl;
         std::cout << "Narrador: " << narrador << std::endl;

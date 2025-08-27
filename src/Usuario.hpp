@@ -1,11 +1,16 @@
 #include "Biblioteca.hpp"
 #include <vector>
+#include <string>
+#include <memory>  // unique_ptr e make_unique
 #pragma once
 
 class Usuario{
 	private:
 	std::string usuario, nome, senha;
-	std::vector<Biblioteca> *livros;
+	std::vector<std::unique_ptr<Biblioteca>> leituras; 
+	// ponteiro inteligente que se deleta qnd sai n é mais usado. Troquei para poder salvar as infos especificas de cada classe 
+	// livro e HQ tem especificações diferentes, por exemplo. Como tava antes n salvava essas infos exclusivas da classe :) std::vector<Biblioteca> *livros;
+	// ainda temos a opção de usar ponteiro normal, mas ai temos que deletar manualmente, ces que sabem
 
 	public:
 	Usuario(){}
@@ -15,13 +20,13 @@ class Usuario{
 		senha = s;
 	}
 	
-	std::string getUsuario(){
+	std::string getUsuario() const{
 		return usuario;
 	}
-	std::string getNome(){
+	std::string getNome() const {
 		return nome;
 	}
-	std::string getSenha(){
+	std::string getSenha() const {
 		return senha;
 	}
 
@@ -34,4 +39,12 @@ class Usuario{
 	void setSenha(std::string s){
 		senha = s;
 	}
+
+	//ainda implementar:
+	void adicionarLeitura();
+	//vai ter que usar make_unique (é sobre criar aquele ponteiro que falei la em cima)
+    void listarLeitura();
+	//para listar vai usar o NomePonteiro->exibir()
+	void editarLeitura();
+	void deletarLeitura();
 };

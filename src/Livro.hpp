@@ -13,7 +13,7 @@ class Livro : public Biblioteca{
 		paginas = p;
 	}
 
-	void exibir(){
+	void exibir() override {
 		Biblioteca::exibir();
 		std::cout << "Gênero: " << genero << "\nEdição: " << edicao << "\nNúmero de páginas: " << paginas << std::endl;
 	}
