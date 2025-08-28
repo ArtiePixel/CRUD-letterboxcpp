@@ -1,8 +1,8 @@
+#pragma once
 #include "Biblioteca.hpp"
 #include <vector>
 #include <string>
 #include <memory>  // unique_ptr e make_unique
-#pragma once
 
 class Usuario{
 	private:
@@ -20,25 +20,36 @@ class Usuario{
 		senha = s;
 	}
 	
-	std::string getUsuario() const{
-		return usuario;
+	// Disable copy constructor and copy assignment
+	Usuario(const Usuario&) = delete;
+	Usuario& operator=(const Usuario&) = delete;
+	
+	// Enable move constructor and move assignment
+	Usuario(Usuario&& other) noexcept
+		: usuario(std::move(other.usuario)),
+		  nome(std::move(other.nome)),
+		  senha(std::move(other.senha)),
+		  leituras(std::move(other.leituras)) {}
+	
+	Usuario& operator=(Usuario&& other) noexcept {
+		if (this != &other) {
+			usuario = std::move(other.usuario);
+			nome = std::move(other.nome);
+			senha = std::move(other.senha);
+			leituras = std::move(other.leituras);
+		}
+		return *this;
 	}
-	std::string getNome() const {
-		return nome;
-	}
-	std::string getSenha() const {
-		return senha;
-	}
+	
+	//getters
+	std::string getUsuario() const{return usuario;}
+	std::string getNome() const {return nome;}
+	std::string getSenha() const {return senha;}
 
-	void setUsuario(std::string u){
-		usuario = u;
-	}
-	void setNome(std::string n){
-		nome = n;
-	}
-	void setSenha(std::string s){
-		senha = s;
-	}
+	//setters
+	void setUsuario(std::string u){usuario = u;}
+	void setNome(std::string n){nome = n;}
+	void setSenha(std::string s){senha = s;}
 
 	//ainda implementar:
 	void adicionarLeitura();

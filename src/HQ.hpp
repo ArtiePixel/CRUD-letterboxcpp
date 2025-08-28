@@ -1,5 +1,5 @@
-#include "Biblioteca.hpp"
 #pragma once
+#include "Biblioteca.hpp"
 
 class HQ : public Biblioteca{
     private:

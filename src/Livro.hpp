@@ -1,3 +1,4 @@
+#pragma once
 #include "Biblioteca.hpp"
 
 class Livro : public Biblioteca{
