@@ -142,10 +142,12 @@ class Usuario{
 	
 	//para listar vai usar o NomePonteiro->exibir()
 	void editarLeitura() {
+        std::cout << "Digite a leitura a ser editada: ";
 
 	}
 
 	void deletarLeitura() {
+        std::cout << "Digite a leitura a ser excluída: ";
 
 	}
 	
