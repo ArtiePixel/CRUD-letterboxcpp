@@ -20,6 +20,12 @@ class Biblioteca{
     virtual void exibir(){
         std::cout << "Titulo: " << titulo << "\nAutor: " << autor << "\nEditora: " << editora << "\nAno: " << data << "\nNota: " << nota << std::endl;
     }
+    
+    std::string getTitulo() const { return titulo; }
+    std::string getAutor() const { return autor; }
+    std::string getEditora() const { return editora; }
+    int getData() const { return data; }
+    float getNota() const { return nota; }
 
     virtual ~Biblioteca() {}
 };

@@ -16,6 +16,10 @@ class Livro : public Biblioteca{
 
 	void exibir() override {
 		Biblioteca::exibir();
-		std::cout << "Gênero: " << genero << "\nEdição: " << edicao << "\nNúmero de páginas: " << paginas << std::endl;
+		std::cout << "Genero: " << genero << "\nEdicao: " << edicao << "\nNumero de paginas: " << paginas << std::endl;
 	}
+	
+	std::string getGenero() const { return genero; }
+	std::string getEdicao() const { return edicao; }
+	int getPaginas() const { return paginas; }
 };

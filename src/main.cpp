@@ -9,7 +9,7 @@
 #include "HQ.hpp"
 #include "Audiobook.hpp"
 
-void menuUsuario() {
+void menuUsuario(Usuario& usuarioLogado) {
     int opcao = -1;
     while (opcao != 0) {
         std::cout << "\n===== DIARIO DE LEITURA ====="<< std::endl;
@@ -27,24 +27,34 @@ void menuUsuario() {
         switch (opcao) {
             case 0:
                 std::cout << "Deslogando..." << std::endl;
+                usuarioLogado.salvarLeituras();
                 break;
 
-                case 1:
+            case 1: {
                 std::cout << "\nQual tipo de leitura deseja cadastrar?" << std::endl;
                 std::cout << "1 - Livro" << std::endl;
                 std::cout << "2 - HQ" << std::endl;
                 std::cout << "3 - Audiobook" << std::endl;
-
-                int a;
-                std::cin >> a;
-
+                std::cout << "Opcao: ";
+                
+                int tipoLeitura;
+                std::cin >> tipoLeitura;
+                std::cin.ignore();
+                
+                if (tipoLeitura >= 1 && tipoLeitura <= 3) {
+                    usuarioLogado.adicionarLeitura(tipoLeitura);
+                    usuarioLogado.salvarLeituras();
+                } else {
+                    std::cout << "Opcao invalida." << std::endl;
+                }
                 break;
+            }
 
             case 2:
-                /* code */
+                usuarioLogado.listarLeitura();
                 break;
             case 3:
-                /* code */
+                usuarioLogado.exibirLeitura();
                 break;
             case 4:
                 /* code */
@@ -96,7 +106,7 @@ int main(){
                 Usuario* usuarioLogado = gerenciadorUsuarios.autenticarUsuario(user, senha);
                 if (usuarioLogado != nullptr) {
                     std::cout << "\nLogin bem-sucedido." << std::endl;
-                    menuUsuario();
+                    menuUsuario(*usuarioLogado);
                 } else {
                     std::cout << "\nFalha no login." << std::endl;
                 }

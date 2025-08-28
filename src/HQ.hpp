@@ -16,4 +16,7 @@ class HQ : public Biblioteca{
         Biblioteca::exibir();
         std::cout << "Colecao: " << colecao << "\nVolume: " << volume << std::endl;
     }
+    
+    std::string getColecao() const { return colecao; }
+    std::string getVolume() const { return volume; }
 };

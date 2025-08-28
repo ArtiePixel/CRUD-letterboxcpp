@@ -28,6 +28,7 @@ class CRUD{
 
         if (i != -1) {
             if (usuarios[i].getSenha() == senha) {
+                usuarios[i].carregarLeituras();
                 return &usuarios[i];
             }
         }

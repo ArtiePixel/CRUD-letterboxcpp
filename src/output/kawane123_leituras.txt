@@ -1,0 +1,4 @@
+LIVRO;harry potter;jk rowling;rocco;2004;8;fantasia;3;300
+HQ;naruto;kshksk;manga;1998;9;naruto;5
+LIVRO;jane eyre;charlotte bronte;harper collins;1890;10;romance;2;400
+AUDIOBOOK;pequeno principe;antoine j perioe;companhia das letras;1879;8;2;anelise 
