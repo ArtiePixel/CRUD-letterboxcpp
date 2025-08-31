@@ -1,5 +1,5 @@
 # CRUD-letterboxcpp
-Integrantes: Arthur (Artie), Murilo e Kawane.
+Integrantes: Artie (Arthur), Murilo e Kawane.
 
 Curso: Engenharia da Computação
 
