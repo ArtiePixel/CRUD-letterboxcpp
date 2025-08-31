@@ -1,1 +1,2 @@
 LIVRO;A Metamorfose;Franz Kafka;Veríssimo;1915;10;Ficcao Absurdista;Primeira;96
+HQ;Sandman;Neil Gaiman;sla;1998;9;Sandman Deluxe;3
