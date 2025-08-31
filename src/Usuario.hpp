@@ -144,7 +144,7 @@ class Usuario{
 	void editarLeitura() {
 		std::string tituloBusca;
 		bool encontrado = false;
-        std::cout << "Digite a leitura a ser editada: ";
+        std::cout << "\nDigite a leitura a ser editada: ";
 		std::getline(std::cin, tituloBusca);
 
 		for (size_t i = 0; i < leituras.size(); i++) {
@@ -213,7 +213,7 @@ class Usuario{
 	void deletarLeitura() {
         std::string tituloBusca;
 		bool encontrado = false;
-        std::cout << "Digite a leitura a ser deletada: ";
+        std::cout << "\nDigite a leitura a ser deletada: ";
 		std::getline(std::cin, tituloBusca);
 
 		for (size_t i = 0; i < leituras.size(); i++) {
@@ -231,8 +231,6 @@ class Usuario{
 				}
 			}
 		}
-
-
 
 		if (!encontrado){
 			std::cout << "Leitura com titulo '" << tituloBusca << "' nao encontrada." << std::endl;
@@ -303,5 +301,29 @@ class Usuario{
 			}
 		}
 		arquivo.close();
+	}
+
+	void gerarRelatorioLeituras(){
+		int totalLeituras = leituras.size(), livros = 0, hqs = 0, audiobooks = 0;
+		float somaNotas = 0, mediaNotas;
+
+		for(size_t i = 0; i < leituras.size(); i++){
+			somaNotas += leituras[i]->getNota();
+			if (leituras[i]->getTipo() == 1){
+				livros++;
+			} else if (leituras[i]->getTipo() == 2){
+				hqs++;
+			} else if (leituras[i]->getTipo() == 3){
+				audiobooks++;
+			}
+		}
+		mediaNotas = somaNotas/(float)leituras.size();
+
+		std::cout << "Livros lidos: " << livros << std::endl;
+		std::cout << "HQs lidas: " << hqs << std::endl;
+		std::cout << "Audiobooks ouvidos: " << audiobooks << std::endl; 
+		std::cout << "Total de leituras feitas: " << totalLeituras << std::endl;
+		std::cout << "Media de notas: " << mediaNotas << std::endl;
+
 	}
 };

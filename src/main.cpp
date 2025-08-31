@@ -31,6 +31,7 @@ void menuUsuario(Usuario& usuarioLogado) {
                 break;
 
             case 1: {
+                std::cout << "\n===== CADASTRAR LEITURA =====" << std::endl;
                 std::cout << "\nQual tipo de leitura deseja cadastrar?" << std::endl;
                 std::cout << "1 - Livro" << std::endl;
                 std::cout << "2 - HQ" << std::endl;
@@ -57,13 +58,16 @@ void menuUsuario(Usuario& usuarioLogado) {
                 usuarioLogado.exibirLeitura();
                 break;
             case 4:
+                std::cout << "\n===== EDITAR LEITURA =====" << std::endl;
                 usuarioLogado.editarLeitura();
                 break;
             case 5:
+                std::cout << "\n===== DELETAR LEITURA =====" << std::endl;
                 usuarioLogado.deletarLeitura();
                 break;
             case 6:
-                /* code */
+                std::cout << "\n===== RELATORIO LEITURA =====" << std::endl;
+                usuarioLogado.gerarRelatorioLeituras();
                 break;
             default:
                 std::cout << "Opção inválida." << std::endl;
