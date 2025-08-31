@@ -84,14 +84,14 @@ class Usuario{
 			std::cout << "Paginas: ";
 			std::cin >> paginas;
 			std::cin.ignore();
-			leituras.push_back(std::make_unique<Livro>(titulo, autor, editora, data, nota, genero, edicao, paginas));
+			leituras.push_back(std::make_unique<Livro>(1, titulo, autor, editora, data, nota, genero, edicao, paginas));
 		} else if (tipo == 2) { // HQ
 			std::string colecao, volume;
 			std::cout << "Colecao: ";
 			std::getline(std::cin, colecao);
 			std::cout << "Volume: ";
 			std::getline(std::cin, volume);
-			leituras.push_back(std::make_unique<HQ>(titulo, autor, editora, data, nota, colecao, volume));
+			leituras.push_back(std::make_unique<HQ>(2, titulo, autor, editora, data, nota, colecao, volume));
 		} else if (tipo == 3) { // Audiobook
 			float duracao;
 			std::string narrador;
@@ -100,7 +100,7 @@ class Usuario{
 			std::cin.ignore();
 			std::cout << "Narrador: ";
 			std::getline(std::cin, narrador);
-			leituras.push_back(std::make_unique<Audiobook>(titulo, autor, editora, data, nota, duracao, narrador));
+			leituras.push_back(std::make_unique<Audiobook>(3, titulo, autor, editora, data, nota, duracao, narrador));
 		}
 		std::cout << "Leitura cadastrada com sucesso!" << std::endl;
 	}
@@ -142,7 +142,71 @@ class Usuario{
 	
 	//para listar vai usar o NomePonteiro->exibir()
 	void editarLeitura() {
+		std::string tituloBusca;
+		bool encontrado = false;
         std::cout << "Digite a leitura a ser editada: ";
+		std::getline(std::cin, tituloBusca);
+
+		for (size_t i = 0; i < leituras.size(); i++) {
+			if (leituras[i]->getTitulo() == tituloBusca) {
+				encontrado = true;
+				std::cout << "\n===== LEITURA ENCONTRADA =====" << std::endl;
+				leituras[i]->exibir();
+				std::cout << "==============================" << std::endl;
+
+				std::string titulo, autor, editora;
+				int data;
+				float nota;
+				
+				std::cout << "Digite o novo titulo: ";
+				std::getline(std::cin, titulo);
+				std::cout << "Novo autor: ";
+				std::getline(std::cin, autor);
+				std::cout << "Nova editora: ";
+				std::getline(std::cin, editora);
+				std::cout << "Novo ano: ";
+				std::cin >> data;
+				std::cout << "Nova nota (0-10): ";
+				std::cin >> nota;
+				std::cin.ignore();
+
+				if (leituras[i]->getTipo() == 1){
+					std::string genero, edicao;
+					int paginas;
+
+					std::cout << "Novo genero: ";
+					std::getline(std::cin, genero);
+					std::cout << "Nova edicao: ";
+					std::getline(std::cin, edicao);
+					std::cout << "Novo número de paginas: ";
+					std::cin >> paginas;
+					std::cin.ignore();
+					leituras[i] = std::make_unique<Livro>(1, titulo, autor, editora, data, nota, genero, edicao, paginas);
+				} else if (leituras[i]->getTipo() == 2){
+					std::string colecao, volume;
+
+					std::cout << "Nova colecao: ";
+					std::getline(std::cin, colecao);
+					std::cout << "Novo volume: ";
+					std::getline(std::cin, volume);
+					leituras[i] = std::make_unique<HQ>(2, titulo, autor, editora, data, nota, colecao, volume);
+				} else if (leituras[i]->getTipo() == 3){
+					float duracao;
+
+					std::string narrador;
+					std::cout << "Nova duracao (horas): ";
+					std::cin >> duracao;
+					std::cin.ignore();
+					std::cout << "Novo narrador: ";
+					std::getline(std::cin, narrador);
+					leituras[i] = std::make_unique<Audiobook>(3, titulo, autor, editora, data, nota, duracao, narrador);
+				}
+				return;
+			}
+		}
+		if (!encontrado){
+			std::cout << "Leitura com titulo '" << tituloBusca << "' nao encontrada." << std::endl;
+		}
 
 	}
 
@@ -199,18 +263,18 @@ class Usuario{
 				std::getline(ss, genero, ';');
 				std::getline(ss, edicao, ';');
 				std::getline(ss, temp, ';'); paginas = std::stoi(temp);
-				leituras.push_back(std::make_unique<Livro>(titulo, autor, editora, data, nota, genero, edicao, paginas));
+				leituras.push_back(std::make_unique<Livro>(1, titulo, autor, editora, data, nota, genero, edicao, paginas));
 			} else if (tipo == "HQ") {
 				std::string colecao, volume;
 				std::getline(ss, colecao, ';');
 				std::getline(ss, volume, ';');
-				leituras.push_back(std::make_unique<HQ>(titulo, autor, editora, data, nota, colecao, volume));
+				leituras.push_back(std::make_unique<HQ>(2, titulo, autor, editora, data, nota, colecao, volume));
 			} else if (tipo == "AUDIOBOOK") {
 				float duracao;
 				std::string narrador;
 				std::getline(ss, temp, ';'); duracao = std::stof(temp);
 				std::getline(ss, narrador, ';');
-				leituras.push_back(std::make_unique<Audiobook>(titulo, autor, editora, data, nota, duracao, narrador));
+				leituras.push_back(std::make_unique<Audiobook>(3, titulo, autor, editora, data, nota, duracao, narrador));
 			}
 		}
 		arquivo.close();

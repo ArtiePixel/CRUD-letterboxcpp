@@ -5,11 +5,13 @@
 class Biblioteca{
     protected:
     std::string titulo, autor, editora;
-    int data;
+    int data, tipo;
     float nota;
 
     public:
-    Biblioteca(std::string t, std::string a, std::string e, int d, float n) {
+    Biblioteca(){}
+    Biblioteca(int ti, std::string t, std::string a, std::string e, int d, float n) {
+        tipo = ti;
         titulo = t;
         autor = a;
         editora = e;
@@ -26,6 +28,7 @@ class Biblioteca{
     std::string getEditora() const { return editora; }
     int getData() const { return data; }
     float getNota() const { return nota; }
+    int getTipo() const { return tipo; }
 
     virtual ~Biblioteca() {}
 };

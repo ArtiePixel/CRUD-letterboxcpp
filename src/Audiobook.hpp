@@ -7,8 +7,9 @@ class Audiobook : public Biblioteca {
     std::string narrador;
 
     public:
-    Audiobook(std::string t, std::string a, std::string e, int d, float n, float du, std::string na)
-    : Biblioteca(t, a, e, d, n) {
+    Audiobook(){}
+    Audiobook(int ti, std::string t, std::string a, std::string e, int d, float n, float du, std::string na)
+    : Biblioteca(ti, t, a, e, d, n) {
         duracao = du;
         narrador = na;
     }

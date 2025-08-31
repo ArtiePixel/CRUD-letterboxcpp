@@ -7,8 +7,9 @@ class Livro : public Biblioteca{
 	int paginas;
 
 	public:
-	Livro(std::string t, std::string a, std::string e, int d, float n, std::string g, std::string ed, int p)
-		: Biblioteca(t, a, e, d, n) {
+	Livro(){}
+	Livro(int ti, std::string t, std::string a, std::string e, int d, float n, std::string g, std::string ed, int p)
+		: Biblioteca(ti, t, a, e, d, n) {
 		genero = g;
 		edicao = ed;
 		paginas = p;
