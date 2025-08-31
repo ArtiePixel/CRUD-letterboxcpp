@@ -57,10 +57,10 @@ void menuUsuario(Usuario& usuarioLogado) {
                 usuarioLogado.exibirLeitura();
                 break;
             case 4:
-               usuarioLogado.editarLeitura();
+                usuarioLogado.editarLeitura();
                 break;
             case 5:
-                /* code */
+                usuarioLogado.deletarLeitura();
                 break;
             case 6:
                 /* code */

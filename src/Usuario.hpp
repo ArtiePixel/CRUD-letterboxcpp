@@ -211,7 +211,32 @@ class Usuario{
 	}
 
 	void deletarLeitura() {
-        std::cout << "Digite a leitura a ser excluída: ";
+        std::string tituloBusca;
+		bool encontrado = false;
+        std::cout << "Digite a leitura a ser deletada: ";
+		std::getline(std::cin, tituloBusca);
+
+		for (size_t i = 0; i < leituras.size(); i++) {
+			if(leituras[i]->getTitulo() == tituloBusca){
+				encontrado = true;
+				std::string confirmacao;
+				std::cout << "Deseja realmente remover '" << tituloBusca << "' das suas leituras? (S ou N): ";
+				std::cin >> confirmacao;
+
+				if (confirmacao == "s" || confirmacao == "S"){
+					leituras.erase(leituras.begin() + i);
+					std::cout << "Leitura deletada";
+				} else {
+					std::cout << "Operacao abortada";
+				}
+			}
+		}
+
+
+
+		if (!encontrado){
+			std::cout << "Leitura com titulo '" << tituloBusca << "' nao encontrada." << std::endl;
+		}
 
 	}
 	
