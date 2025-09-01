@@ -60,10 +60,12 @@ void menuUsuario(Usuario& usuarioLogado) {
             case 4:
                 std::cout << "\n===== EDITAR LEITURA =====" << std::endl;
                 usuarioLogado.editarLeitura();
+                usuarioLogado.salvarLeituras();
                 break;
             case 5:
                 std::cout << "\n===== DELETAR LEITURA =====" << std::endl;
                 usuarioLogado.deletarLeitura();
+                usuarioLogado.salvarLeituras();
                 break;
             case 6:
                 std::cout << "\n===== RELATORIO LEITURA =====" << std::endl;
@@ -127,6 +129,7 @@ int main(){
                 std::cout << "Senha: ";
                 std::getline(std::cin, senha);
                 gerenciadorUsuarios.criarUsuario(user, name, senha);
+                gerenciadorUsuarios.salvarUsuario();
                 break;
             }
 
@@ -139,12 +142,14 @@ int main(){
             case 4: {
                 std::cout << "\n===== ATUALIZAR USUARIO =====" << std::endl;
                 gerenciadorUsuarios.atualizarUsuario();
+                gerenciadorUsuarios.salvarUsuario();
                 break;
             }
 
             case 5: {
                 std::cout << "\n=====DELETAR USUARIO =====" << std::endl;
                 gerenciadorUsuarios.deletarUsuario();
+                gerenciadorUsuarios.salvarUsuario();
                 break;
             }
 
