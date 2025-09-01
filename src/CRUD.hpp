@@ -73,6 +73,29 @@ class CRUD{
         if (!novoUsuario.empty()) usuarios[i].setUsuario(novoUsuario);
         if (!novoNome.empty()) usuarios[i].setNome(novoNome);
         if (!novaSenha.empty()) usuarios[i].setSenha(novaSenha);
+
+        std::string oldUserFile = user + "_leituras.txt";
+        std::string newUserFile = novoUsuario + "_leituras.txt";
+
+        std::ifstream entrada(oldUserFile);
+        if (!entrada.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo de origem: " << oldUserFile << std::endl;
+            return ; 
+        }
+        std::ofstream saida(newUserFile);
+        if (!saida.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo de destino: " << newUserFile << std::endl;
+            entrada.close(); 
+        }
+        std::string linha;
+        while (std::getline(entrada, linha)) {
+            saida << linha << std::endl;
+        }
+
+        entrada.close();
+        saida.close();
+
+        std::remove(oldUserFile.c_str());
         
         std::cout << "Usuario atualizado com sucesso." << std::endl;
     }
