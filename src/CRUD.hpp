@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>   //  pro arquivo txt
 #include <sstream>   //  pro arquivo txt
+#include <cstdio>
 
 
 class CRUD{
@@ -94,6 +95,10 @@ class CRUD{
         
         if (confirmacao == "s" || confirmacao == "S") {
             usuarios.erase(usuarios.begin() + i);
+
+            std::string userfile = user + "_leituras.txt";
+            std::remove(userfile.c_str());
+
             std::cout << "Usuario deletado com sucesso." << std::endl;
         } else {
             std::cout << "Operacao cancelada." << std::endl;
